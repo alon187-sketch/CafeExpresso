@@ -1,6 +1,4 @@
-package com;
-
-import com.example.demo.Produto;
+package com.example.demo;
 
 public class ItemPedido {
 
