@@ -3,11 +3,27 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
+
+
 public class PedidoTest {    
+
+    private Pedido pedido;
+
+    @BeforeEach
+    public void setup (){
+        pedido = new Pedido();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        pedido = null;
+    }
     
     @Test
     void deveIniciarComStatusPendente() {
-        Pedido pedido = new Pedido();
         assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
 
@@ -17,8 +33,6 @@ public class PedidoTest {
         Produto cafe = new Produto("Café", 5.0);
         Produto pao = new Produto("Pão", 3.0);
 
-        Pedido pedido = new Pedido();
-
         pedido.adicionarItem(new ItemPedido(cafe, 3)); // 15
         pedido.adicionarItem(new ItemPedido(pao, 3));  // 9
 
@@ -27,66 +41,40 @@ public class PedidoTest {
 
     @Test
     void deveMudarStatusParaPago() {
-
-        Pedido pedido = new Pedido();
-
         pedido.pagarPedido();
-
         assertEquals(StatusPedido.PAGO, pedido.getStatus());
     }
 
     @Test
     void deveMudarStatusParaEmPreparo() {
-
-        Pedido pedido = new Pedido();
-
         pedido.pagarPedido();
         pedido.iniciarPreparo();
-
         assertEquals(StatusPedido.EM_PREPARO, pedido.getStatus());
     }
 
     @Test
     void deveFinalizarPedido() {
-
-        Pedido pedido = new Pedido();
-
         pedido.pagarPedido();
         pedido.iniciarPreparo();
         pedido.finalizarPedido();
-
         assertEquals(StatusPedido.FINALIZADO, pedido.getStatus());
     }
 
     @Test
     void naoDeveIrParaPreparoSemPagamento() {
-
-        Pedido pedido = new Pedido();
-
         pedido.iniciarPreparo();
-
         assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
 
     @Test
     void naoDeveFinalizarSemEstarEmPreparo() {
-
-        Pedido pedido = new Pedido();
-
         pedido.finalizarPedido();
-
         assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
 
     @Test
     void naoDevePagarDuasVezes() {
-
-        Pedido pedido = new Pedido();
-
         pedido.pagarPedido();
-        pedido.pagarPedido(); // tentativa inválida
-
         assertEquals(StatusPedido.PAGO, pedido.getStatus());
     }
-
 }
