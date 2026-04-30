@@ -19,10 +19,10 @@ public class PedidoTest {
 
         Pedido pedido = new Pedido();
 
-        pedido.adicionarItem(new ItemPedido(cafe, 2)); // 10
+        pedido.adicionarItem(new ItemPedido(cafe, 3)); // 15
         pedido.adicionarItem(new ItemPedido(pao, 3));  // 9
 
-        assertEquals(19.0, pedido.calcularTotal());
+        assertEquals(24.0, pedido.calcularTotal());
     }
 
     @Test
