@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemPedidoTest {
 
-        @Test
+    @Test
     void deveCriarItemPedidoValido() {
 
         Produto produto = new Produto("Café", 5.0);
