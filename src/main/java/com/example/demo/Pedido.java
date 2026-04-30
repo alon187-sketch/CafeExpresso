@@ -6,6 +6,10 @@ public class Pedido {
     private ArrayList<ItemPedido> itens;
     private StatusPedido status;
 
+    public StatusPedido getStatus() {
+        return status;
+    }
+
     public Pedido() {
         itens = new ArrayList<>();
         status = StatusPedido.PENDENTE;
