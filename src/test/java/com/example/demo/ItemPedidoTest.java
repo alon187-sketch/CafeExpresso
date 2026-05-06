@@ -10,10 +10,10 @@ public class ItemPedidoTest {
     void deveCriarItemPedidoValido() {
 
         Produto produto = new Produto("Café", 5.0);
-        ItemPedido item = new ItemPedido(produto, 2);
+        ItemPedido item = new ItemPedido(produto, 5);
 
         assertEquals(produto, item.getProduto());
-        assertEquals(2, item.getQuantidade());
+        assertEquals(5, item.getQuantidade());
     }
 
     @Test
