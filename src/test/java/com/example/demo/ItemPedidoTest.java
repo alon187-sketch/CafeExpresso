@@ -19,10 +19,10 @@ public class ItemPedidoTest {
     @Test
     void deveCalcularSubtotalCorretamente() {
 
-        Produto produto = new Produto("Café", 5.0);
+        Produto produto = new Produto("Café", 6.0);
         ItemPedido item = new ItemPedido(produto, 3);
 
-        assertEquals(15.0, item.calcularSubtotal());
+        assertEquals(18.0, item.calcularSubtotal());
     }
 
     @Test
