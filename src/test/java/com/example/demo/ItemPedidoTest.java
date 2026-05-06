@@ -39,7 +39,7 @@ public class ItemPedidoTest {
     @Test
     void deveLancarExcecaoParaQuantidadeZero() {
 
-        Produto produto = new Produto("Café", 5.0);
+        Produto produto = new Produto("Café", 5);
 
         Exception ex = assertThrows(
                 IllegalArgumentException.class,
@@ -56,7 +56,7 @@ public class ItemPedidoTest {
 
         Exception ex = assertThrows(
                 IllegalArgumentException.class,
-                () -> new ItemPedido(produto, -3)
+                () -> new ItemPedido(produto, -4)
         );
 
         assertEquals("Quantidade inválida.", ex.getMessage());
