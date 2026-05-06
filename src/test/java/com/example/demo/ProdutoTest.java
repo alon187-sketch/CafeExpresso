@@ -52,7 +52,7 @@ public class ProdutoTest {
 
         Exception ex = assertThrows(
                 IllegalArgumentException.class,
-                () -> new Produto("Café", -10)
+                () -> new Produto("Café", -5)
         );
 
         assertEquals("Preço inválido.", ex.getMessage());
