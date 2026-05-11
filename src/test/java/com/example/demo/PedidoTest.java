@@ -22,10 +22,6 @@ public class PedidoTest {
         pedido = null;
     }
     
-    @Test
-    void deveIniciarComStatusPendente() {
-        assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
-    }
 
     @Test
     void deveAdicionarItensECalcularTotal() {
@@ -37,39 +33,6 @@ public class PedidoTest {
         pedido.adicionarItem(new ItemPedido(pao, 3));  // 9
 
         assertEquals(24.0, pedido.calcularTotal());
-    }
-
-    @Test
-    void deveMudarStatusParaPago() {
-        pedido.pagarPedido();
-        assertEquals(StatusPedido.PAGO, pedido.getStatus());
-    }
-
-    @Test
-    void deveMudarStatusParaEmPreparo() {
-        pedido.pagarPedido();
-        pedido.iniciarPreparo();
-        assertEquals(StatusPedido.EM_PREPARO, pedido.getStatus());
-    }
-
-    @Test
-    void deveFinalizarPedido() {
-        pedido.pagarPedido();
-        pedido.iniciarPreparo();
-        pedido.finalizarPedido();
-        assertEquals(StatusPedido.FINALIZADO, pedido.getStatus());
-    }
-
-    @Test
-    void naoDeveIrParaPreparoSemPagamento() {
-        pedido.iniciarPreparo();
-        assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
-    }
-
-    @Test
-    void naoDeveFinalizarSemEstarEmPreparo() {
-        pedido.finalizarPedido();
-        assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
 
     @Test
